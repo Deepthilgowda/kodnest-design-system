@@ -1,0 +1,159 @@
+/**
+ * KodNest Premium Build System — Components
+ * Same hover effect and border radius everywhere.
+ */
+
+/* ─── Buttons ─── */
+.kn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--btn-height);
+  padding: 0 var(--btn-padding-x);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.kn-btn-primary {
+  background-color: var(--color-accent);
+  color: white;
+  border: 1px solid var(--color-accent);
+}
+
+.kn-btn-primary:hover {
+  background-color: #6b0000;
+  border-color: #6b0000;
+}
+
+.kn-btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.kn-btn-secondary:hover {
+  border-color: var(--color-text);
+  background-color: rgba(17, 17, 17, 0.04);
+}
+
+/* ─── Inputs ─── */
+.kn-input {
+  display: block;
+  width: 100%;
+  min-height: var(--input-height);
+  padding: 0 var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  background-color: white;
+  border: var(--input-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.kn-input:focus {
+  outline: none;
+  border: var(--input-border-focus);
+  padding: 0 calc(var(--space-2) - 1px);
+}
+
+.kn-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Textarea */
+.kn-textarea {
+  min-height: 120px;
+  padding: var(--space-2);
+  resize: vertical;
+}
+
+/* ─── Cards ─── */
+.kn-card {
+  background-color: white;
+  border: var(--card-border);
+  border-radius: var(--radius);
+  padding: var(--card-padding);
+  transition: border-color var(--transition);
+}
+
+.kn-card:hover {
+  border-color: rgba(17, 17, 17, 0.2);
+}
+
+/* ─── Status Badge ─── */
+.kn-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.kn-badge--not-started {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+}
+
+.kn-badge--in-progress {
+  background-color: rgba(166, 139, 75, 0.12);
+  color: var(--color-warning);
+  border-color: rgba(166, 139, 75, 0.3);
+}
+
+.kn-badge--shipped {
+  background-color: rgba(90, 122, 90, 0.12);
+  color: var(--color-success);
+  border-color: rgba(90, 122, 90, 0.3);
+}
+
+/* ─── Checkbox (Proof Footer) ─── */
+.kn-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-body);
+  cursor: pointer;
+}
+
+.kn-checkbox-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}
+
+/* ─── Error State ─── */
+.kn-error {
+  padding: var(--space-2);
+  background-color: rgba(139, 0, 0, 0.06);
+  border: 1px solid rgba(139, 0, 0, 0.2);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-size: var(--text-body);
+}
+
+.kn-error-title {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+/* ─── Empty State ─── */
+.kn-empty {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.kn-empty-title {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}

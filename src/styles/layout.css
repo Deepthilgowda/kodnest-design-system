@@ -1,0 +1,123 @@
+/**
+ * KodNest Premium Build System — Global Layout Structure
+ * Every page: Top Bar → Context Header → Workspace + Panel → Proof Footer
+ */
+
+.kn-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── Top Bar ─── */
+.kn-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.kn-topbar__project {
+  font-family: var(--font-serif);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.kn-topbar__progress {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+.kn-topbar__status {
+  /* Badge goes here */
+}
+
+/* ─── Context Header ─── */
+.kn-context-header {
+  padding: var(--context-header-padding);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.kn-context-header__headline {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-1);
+}
+
+.kn-context-header__subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+/* ─── Workspace Container ─── */
+.kn-workspace {
+  display: flex;
+  flex: 1;
+  padding: var(--space-4);
+  gap: var(--space-4);
+  min-height: 0;
+}
+
+/* Primary Workspace — 70% width ─── */
+.kn-workspace__primary {
+  flex: 0 0 var(--workspace-primary-width);
+  min-width: 0;
+}
+
+/* Secondary Panel — 30% width ─── */
+.kn-workspace__panel {
+  flex: 0 0 var(--workspace-secondary-width);
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.kn-panel__explanation {
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+}
+
+.kn-panel__prompt-box {
+  padding: var(--space-2);
+  background-color: white;
+  border: var(--card-border);
+  border-radius: var(--radius);
+  font-family: monospace;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.kn-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* ─── Proof Footer ─── */
+.kn-proof-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: var(--footer-height);
+  padding: 0 var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.kn-proof-footer__checklist {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
