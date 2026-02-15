@@ -1,0 +1,150 @@
+/**
+ * Job Notification Tracker — Top Navigation
+ * KodNest Premium Design System
+ * Deep red accent (#8B0000), responsive hamburger
+ */
+
+.kn-topnav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  padding: 0 var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.kn-topnav__brand {
+  font-family: var(--font-serif);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.kn-topnav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.kn-topnav__link {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  padding-bottom: var(--space-1);
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.kn-topnav__link:hover {
+  color: var(--color-accent);
+}
+
+.kn-topnav__link--active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Hamburger — hidden on desktop */
+.kn-topnav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-1);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.kn-topnav__hamburger:hover {
+  border-color: var(--color-accent);
+}
+
+.kn-topnav__hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 1px;
+}
+
+/* Layout content area */
+.kn-layout--job-tracker .kn-layout__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Placeholder page — calm, high whitespace */
+.kn-placeholder-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--space-5) var(--space-4);
+}
+
+.kn-placeholder-page__heading {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+
+.kn-placeholder-page__subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: var(--measure);
+}
+
+/* Mobile: hamburger + collapsible nav */
+@media (max-width: 768px) {
+  .kn-topnav__hamburger {
+    display: flex;
+  }
+
+  .kn-topnav__links {
+    position: absolute;
+    top: var(--topbar-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-2);
+    gap: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-slow), opacity var(--transition-slow);
+  }
+
+  .kn-topnav__links--open {
+    max-height: 320px;
+    opacity: 1;
+  }
+
+  .kn-topnav__link {
+    padding: var(--space-2);
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .kn-topnav__link--active {
+    border-left-color: var(--color-accent);
+    border-bottom-color: transparent;
+  }
+}
