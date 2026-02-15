@@ -1,0 +1,300 @@
+/**
+ * Job Notification Tracker — Job cards, filter bar, modal
+ * Premium feel, consistent with design tokens.
+ */
+
+/* ─── Page subtext ─── */
+.kn-page__subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+/* ─── Filter bar ─── */
+.kn-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  width: 100%;
+  max-width: 100%;
+}
+
+.kn-filter-bar__search {
+  min-width: 200px;
+  flex: 1;
+  max-width: 320px;
+}
+
+.kn-filter-bar__select {
+  min-width: 120px;
+  max-width: 160px;
+  cursor: pointer;
+}
+
+/* ─── Job grid ─── */
+.kn-job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-3);
+  width: 100%;
+}
+
+/* ─── Job card ─── */
+.kn-job-card {
+  background-color: white;
+  border: var(--card-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  transition: border-color var(--transition);
+}
+
+.kn-job-card:hover {
+  border-color: rgba(17, 17, 17, 0.2);
+}
+
+.kn-job-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kn-job-card__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-h4);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+  flex: 1;
+  min-width: 0;
+}
+
+.kn-job-card__source {
+  flex-shrink: 0;
+  font-size: var(--text-small);
+  font-weight: 500;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.kn-job-card__source--linkedin {
+  background-color: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.25);
+}
+
+.kn-job-card__source--naukri {
+  background-color: rgba(90, 122, 90, 0.12);
+  color: var(--color-success);
+  border: 1px solid rgba(90, 122, 90, 0.3);
+}
+
+.kn-job-card__source--indeed {
+  background-color: rgba(139, 0, 0, 0.08);
+  color: var(--color-accent);
+  border: 1px solid rgba(139, 0, 0, 0.2);
+}
+
+.kn-job-card__company {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.kn-job-card__meta {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.kn-job-card__sep {
+  margin: 0 var(--space-1);
+}
+
+.kn-job-card__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.kn-job-card__salary {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.kn-job-card__posted {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.kn-job-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.kn-job-card__btn {
+  font-size: var(--text-small);
+  padding: 0 var(--space-2);
+  min-height: 36px;
+}
+
+.kn-btn-saved {
+  background-color: rgba(90, 122, 90, 0.12);
+  color: var(--color-success);
+  border: 1px solid rgba(90, 122, 90, 0.3);
+}
+
+.kn-btn-saved:hover {
+  background-color: rgba(90, 122, 90, 0.2);
+  border-color: var(--color-success);
+}
+
+/* ─── Modal ─── */
+.kn-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 1000;
+  animation: kn-fade-in 150ms ease-out;
+}
+
+@keyframes kn-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.kn-modal {
+  background-color: white;
+  border: var(--card-border);
+  border-radius: var(--radius);
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-4);
+  animation: kn-modal-in 200ms ease-out;
+}
+
+@keyframes kn-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.kn-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.kn-modal__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+  flex: 1;
+  min-width: 0;
+}
+
+.kn-modal__close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.kn-modal__close:hover {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.kn-modal__company {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2);
+}
+
+.kn-modal__meta {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.kn-modal__section {
+  margin-bottom: var(--space-3);
+}
+
+.kn-modal__label {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.kn-modal__description {
+  font-size: var(--text-body);
+  line-height: var(--line-height-loose);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.kn-modal__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.kn-modal__skill-tag {
+  font-size: var(--text-small);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+.kn-modal__footer {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.kn-modal__footer .kn-btn {
+  text-decoration: none;
+}
