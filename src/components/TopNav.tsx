@@ -5,7 +5,7 @@
  * Responsive: hamburger menu on mobile
  */
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 const NAV_ITEMS = [
@@ -39,7 +39,7 @@ export function TopNav() {
 
   return (
     <nav className="kn-topnav">
-      <div className="kn-topnav__brand">Job Notification Tracker</div>
+      <Link to="/" className="kn-topnav__brand">Job Notification Tracker</Link>
 
       <button
         type="button"

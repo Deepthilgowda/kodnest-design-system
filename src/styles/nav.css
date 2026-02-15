@@ -20,6 +20,11 @@
   font-size: var(--text-h4);
   font-weight: 600;
   color: var(--color-text);
+  text-decoration: none;
+}
+
+.kn-topnav__brand:hover {
+  color: var(--color-accent);
 }
 
 .kn-topnav__links {
@@ -83,17 +88,18 @@
   min-height: 0;
 }
 
-/* Placeholder page — calm, high whitespace */
-.kn-placeholder-page {
+/* ─── Landing Page ─── */
+.kn-landing {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   padding: var(--space-5) var(--space-4);
+  max-width: var(--measure);
 }
 
-.kn-placeholder-page__heading {
+.kn-landing__headline {
   font-family: var(--font-serif);
   font-size: var(--text-h1);
   font-weight: 600;
@@ -102,11 +108,137 @@
   color: var(--color-text);
 }
 
-.kn-placeholder-page__subtext {
+.kn-landing__subtext {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-4);
+  max-width: var(--measure);
+}
+
+.kn-landing__cta {
+  text-decoration: none;
+}
+
+/* ─── Standard Page Shell ─── */
+.kn-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-5) var(--space-4);
+}
+
+.kn-page__heading {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}
+
+/* ─── Empty State ─── */
+.kn-empty-state {
+  padding: var(--space-5) 0;
+  max-width: var(--measure);
+}
+
+.kn-empty-state__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2);
+}
+
+.kn-empty-state__message {
   font-size: var(--text-body);
   color: var(--color-text-muted);
   margin: 0;
+  line-height: var(--line-height-body);
+}
+
+/* ─── Settings Page ─── */
+.kn-settings-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-5) var(--space-4);
+}
+
+.kn-settings-page__heading {
+  font-family: var(--font-serif);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+
+.kn-settings-page__subtext {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-4);
   max-width: var(--measure);
+}
+
+.kn-settings-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ─── Form Fields ─── */
+.kn-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.kn-form-field__label {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.kn-form-field__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.kn-form-field__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  cursor: default;
+}
+
+.kn-form-field__option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+}
+
+.kn-form-field__option input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ─── Proof Placeholder ─── */
+.kn-proof-placeholder {
+  padding: var(--space-4) 0;
+}
+
+.kn-proof-placeholder__message {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: 0;
 }
 
 /* Mobile: hamburger + collapsible nav */

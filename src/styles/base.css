@@ -89,6 +89,15 @@ a:hover {
   color: #6b0000;
 }
 
+/* Links styled as buttons — preserve button appearance */
+a.kn-btn-primary {
+  color: white;
+}
+
+a.kn-btn-primary:hover {
+  color: white;
+}
+
 /* Focus — clear, accessible */
 :focus-visible {
   outline: 2px solid var(--color-accent);
