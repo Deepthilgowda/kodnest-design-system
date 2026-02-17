@@ -57,12 +57,9 @@ export function SettingsPage() {
   };
 
   return (
-    <section className="kn-settings-section">
+    <div className="kn-refined-container">
       <div className="kn-settings-page__header">
         <h1 className="kn-settings-page__heading">Settings</h1>
-        {saveStatus === 'saved' && (
-          <span className="kn-settings-page__status">Saved</span>
-        )}
       </div>
       <p className="kn-settings-page__subtext" style={{ maxWidth: 'none' }}>
         Configure your job preferences to activate intelligent matching.
@@ -173,7 +170,7 @@ export function SettingsPage() {
           />
         </div>
 
-        <div className="kn-settings-page__actions">
+        <div className="kn-settings-page__actions" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
           <button
             type="button"
             className="kn-btn kn-btn-primary"
@@ -181,8 +178,13 @@ export function SettingsPage() {
           >
             Save Preferences
           </button>
+          {saveStatus === 'saved' && (
+            <span className="kn-settings-page__status" style={{ color: 'var(--color-success)', fontWeight: 500 }}>
+              ✓ Saved
+            </span>
+          )}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

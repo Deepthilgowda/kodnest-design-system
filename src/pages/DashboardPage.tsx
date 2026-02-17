@@ -69,7 +69,7 @@ export function DashboardPage() {
   const isPreferencesSet = preferences.roleKeywords.length > 0 || preferences.skills.length > 0;
 
   return (
-    <section className="kn-section">
+    <section className="kn-container">
       <h1 className="kn-page__heading">Dashboard</h1>
 
       {!isPreferencesSet && (

@@ -102,7 +102,7 @@
 
 .kn-landing__headline {
   font-family: var(--font-serif);
-  font-size: var(--text-h1);
+  font-size: 3rem;
   font-weight: 600;
   line-height: var(--line-height-tight);
   margin: 0 0 var(--space-2);
@@ -110,14 +110,29 @@
 }
 
 .kn-landing__subtext {
-  font-size: var(--text-body-lg);
+  font-size: 1.25rem;
   color: var(--color-text-muted);
   margin: 0 0 var(--space-4);
   width: 100%;
 }
 
 .kn-landing__cta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  /* py-3.5, px-8 — slightly larger */
+  margin-top: 1.5rem;
+  /* mt-6 */
+  border-radius: 12px;
+  /* rounded-xl */
+  font-size: 1rem;
+  /* increased from text-small */
+  font-weight: 500;
   text-decoration: none;
+  height: auto;
+  transition: all var(--transition);
 }
 
 /* ─── Standard Page Shell ─── */
@@ -178,7 +193,8 @@
 }
 
 .kn-settings-page__subtext {
-  font-size: var(--text-body);
+  font-size: 1.1rem;
+  /* Increased for better readability */
   color: var(--color-text-muted);
   margin: 0 0 var(--space-4);
   width: 100%;
@@ -192,6 +208,11 @@
   max-width: 480px;
 }
 
+/* Scoped input size for Settings */
+.kn-settings-page__form .kn-input {
+  font-size: 1.05rem;
+}
+
 /* ─── Form Fields ─── */
 .kn-form-field {
   display: flex;
@@ -200,7 +221,8 @@
 }
 
 .kn-form-field__label {
-  font-size: var(--text-body);
+  font-size: 1.1rem;
+  /* Increased for prominence */
   font-weight: 500;
   color: var(--color-text);
 }
@@ -215,7 +237,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  font-size: var(--text-body);
+  font-size: 1.05rem;
+  /* Increased from text-body */
   color: var(--color-text);
   cursor: default;
 }

@@ -41,7 +41,8 @@
   --letter-spacing-wide: 0.02em;
 
   /* Max width for text blocks */
-  --measure: 45rem; /* 720px */
+  --measure: 45rem;
+  /* 720px */
 
   /* ─── Spacing System (8, 16, 24, 40, 64 only) ─── */
   --space-1: 8px;

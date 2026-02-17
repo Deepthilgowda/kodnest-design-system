@@ -27,7 +27,7 @@ export function ShipPage() {
     };
 
     return (
-        <section className="kn-section">
+        <section className="kn-container">
             <header className="kn-page__header" style={{ marginBottom: 'var(--space-8)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
                 <div>
                     <h1 className="kn-page__heading">Project Shipping</h1>

@@ -22,7 +22,7 @@ export function SavedPage() {
   );
 
   return (
-    <section className="kn-section">
+    <section className="kn-container">
       <h1 className="kn-page__heading">Saved</h1>
       {savedJobs.length === 0 ? (
         <EmptyState

@@ -18,9 +18,67 @@
   box-sizing: border-box;
 }
 
+/* Specific refined container for Home and Settings */
+.kn-refined-container {
+  flex: 1;
+  width: 100%;
+  max-width: 1152px;
+  /* 6xl */
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  /* py-12, px-6 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
   .kn-container {
     padding: var(--space-3);
+  }
+
+  .kn-refined-container {
+    padding: 2rem 1.25rem;
+    /* Slightly reduced on mobile */
+  }
+
+  .kn-hero-container {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* Hero layout for Landing Page — Vertically centered, horizontally left-aligned */
+.kn-hero-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  /* Vertical center */
+  justify-content: flex-start;
+  /* Horizontal left */
+  min-height: calc(100vh - var(--topbar-height));
+  padding: 0 1.5rem;
+  /* px-6 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kn-hero-container {
+  max-width: 42rem;
+  /* 2xl */
+  width: 100%;
+}
+
+.kn-hero-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Left align children */
+}
+
+@media (max-width: 768px) {
+  .kn-hero-section {
+    min-height: calc(100vh - 56px);
+    /* Mobile fallback */
   }
 }
 

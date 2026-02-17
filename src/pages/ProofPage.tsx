@@ -64,7 +64,7 @@ Core Features:
   };
 
   return (
-    <section className="kn-section">
+    <section className="kn-container">
       <header className="kn-page__header" style={{ marginBottom: 'var(--space-8)' }}>
         <h1 className="kn-page__heading">Final Proof</h1>
         <p className="kn-page__subheading">Review your progress and collect artifacts for submission.</p>

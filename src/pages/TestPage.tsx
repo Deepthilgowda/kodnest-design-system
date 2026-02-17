@@ -30,7 +30,7 @@ export function TestPage() {
     const isAllPassed = passCount === TOTAL_TESTS;
 
     return (
-        <section className="kn-section">
+        <section className="kn-container">
             <header className="kn-page__header" style={{ marginBottom: 'var(--space-6)' }}>
                 <h1 className="kn-page__heading">System Verification</h1>
                 <div className={`kn-banner ${isAllPassed ? 'kn-banner--success' : 'kn-banner--warning'}`} style={{ marginTop: 'var(--space-4)' }}>

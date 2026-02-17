@@ -86,7 +86,7 @@ export function DigestPage() {
 
   if (!isPreferencesSet) {
     return (
-      <section className="kn-page-section">
+      <section className="kn-container">
         <h1 className="kn-page__heading">Digest</h1>
         <div className="kn-empty-state">
           <h2 className="kn-empty-state__title">Set preferences to generate a personalized digest.</h2>
@@ -97,7 +97,7 @@ export function DigestPage() {
   }
 
   return (
-    <section className="kn-digest-page">
+    <section className="kn-container">
       <div className="kn-digest-header-actions" style={{ maxWidth: 'none' }}>
         <h1 className="kn-page__heading">Daily Digest</h1>
         {!digest && (
