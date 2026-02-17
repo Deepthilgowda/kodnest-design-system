@@ -5,6 +5,7 @@
 import type { Job } from '../types/job';
 import { calculateMatchScore } from './scoring';
 import type { Preferences } from './preferences';
+import { getJobStatus } from './jobStatus';
 
 export type SortOption = 'latest' | 'oldest' | 'company' | 'match-score' | 'salary';
 
@@ -15,6 +16,7 @@ export interface FilterOptions {
   experience: string;
   source: string;
   sort: SortOption;
+  status: string;
   showMatchesOnly?: boolean;
 }
 
@@ -57,6 +59,9 @@ export function filterAndSortJobs(
   }
   if (filters.source) {
     result = result.filter((j) => j.source === filters.source);
+  }
+  if (filters.status) {
+    result = result.filter((j) => getJobStatus(j.id) === filters.status);
   }
 
   // 4. Sorting

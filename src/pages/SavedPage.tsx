@@ -39,6 +39,7 @@ export function SavedPage() {
                 job={job}
                 onView={setViewJob}
                 onSavedChange={() => setSavedVersion((v) => v + 1)}
+                onStatusChange={() => setSavedVersion((v) => v + 1)}
                 showUnsave
               />
             ))}

@@ -17,9 +17,12 @@ type FilterBarProps = {
   onSourceChange: (v: string) => void;
   sort: string;
   onSortChange: (v: string) => void;
+  status: string;
+  onStatusChange: (v: string) => void;
   locations: string[];
   showMatchesOnly?: boolean;
   onShowMatchesOnlyChange?: (v: boolean) => void;
+  onClearAll: () => void; // New prop
 };
 
 const MODES: JobMode[] = ['Remote', 'Hybrid', 'Onsite'];
@@ -46,9 +49,12 @@ export function FilterBar({
   onSourceChange,
   sort,
   onSortChange,
+  status,
+  onStatusChange,
   locations,
   showMatchesOnly,
   onShowMatchesOnlyChange,
+  onClearAll,
 }: FilterBarProps) {
   return (
     <div className="kn-filter-bar">
@@ -127,6 +133,27 @@ export function FilterBar({
             <option key={value} value={value}>{label}</option>
           ))}
         </select>
+        <select
+          className="kn-input kn-filter-bar__select"
+          value={status}
+          onChange={(e) => onStatusChange(e.target.value)}
+          aria-label="Filter by status"
+        >
+          <option value="">All statuses</option>
+          <option value="Not Applied">Not Applied</option>
+          <option value="Applied">Applied</option>
+          <option value="Rejected">Rejected</option>
+          <option value="Selected">Selected</option>
+        </select>
+        {(keyword || location || mode || experience || source || status) && (
+          <button
+            type="button"
+            className="kn-btn kn-btn-secondary kn-btn--sm kn-filter-bar__clear"
+            onClick={onClearAll}
+          >
+            Clear All
+          </button>
+        )}
       </div>
     </div>
   );

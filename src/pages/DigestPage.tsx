@@ -8,6 +8,7 @@ import { JOBS } from '../data/jobs';
 import { getPreferences } from '../utils/preferences';
 import { calculateMatchScore } from '../utils/scoring';
 import type { JobWithScore } from '../utils/filterJobs';
+import { getJobStatuses } from '../utils/jobStatus';
 
 export function DigestPage() {
   const [digest, setDigest] = useState<JobWithScore[] | null>(null);
@@ -165,6 +166,67 @@ export function DigestPage() {
             <footer className="kn-digest-card__footer">
               This digest was generated based on your preferences.
             </footer>
+          </div>
+
+          <div className="kn-digest-card" style={{ marginTop: 'var(--space-4)' }}>
+            <header className="kn-digest-card__header">
+              <h2 className="kn-digest-card__title">Recent Status Updates</h2>
+            </header>
+            <div className="kn-digest-list">
+              {(() => {
+                const jobStatuses = getJobStatuses();
+                const updates = Object.entries(jobStatuses)
+                  .map(([jobId, entry]) => {
+                    const job = JOBS.find(j => j.id === jobId);
+                    return {
+                      jobId,
+                      jobTitle: job?.title || 'Unknown Role',
+                      company: job?.company || 'Unknown Company',
+                      status: entry.status,
+                      date: entry.date
+                    };
+                  })
+                  .sort((a, b) => b.date - a.date);
+
+                if (updates.length === 0) {
+                  return (
+                    <div className="kn-digest-item" style={{ justifyContent: 'center' }}>
+                      <p className="kn-empty-state__message">No recent status updates.</p>
+                    </div>
+                  );
+                }
+
+                return updates.map((update, idx) => (
+                  <div key={`${update.jobId}-${idx}`} className="recent-status-card">
+                    <div className="recent-status-header">
+                      <div className="recent-status-info">
+                        <div className="job-title" style={{ fontWeight: 600, fontSize: '1rem' }}>{update.jobTitle}</div>
+                        <div className="company" style={{ color: 'var(--color-text-muted)' }}>{update.company}</div>
+                      </div>
+                      <div className="recent-status-side">
+                        <div className="recent-status-badge">
+                          <span className={`kn-badge kn-badge--sm ${update.status === 'Applied' ? 'kn-badge--blue' :
+                            update.status === 'Rejected' ? 'kn-badge--red' :
+                              update.status === 'Selected' ? 'kn-badge--green' : ''
+                            }`}>
+                            {update.status}
+                          </span>
+                        </div>
+                        <div className="recent-status-date">
+                          {new Date(update.date).toLocaleDateString('en-IN', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ));
+              })()}
+            </div>
           </div>
         </div>
       )}

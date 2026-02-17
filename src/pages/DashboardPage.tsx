@@ -23,9 +23,10 @@ export function DashboardPage() {
   const [experience, setExperience] = useState('');
   const [source, setSource] = useState('');
   const [sort, setSort] = useState<SortOption>(DEFAULT_SORT);
+  const [status, setStatus] = useState('');
   const [showMatchesOnly, setShowMatchesOnly] = useState(false);
   const [viewJob, setViewJob] = useState<Job | null>(null);
-  const [, setSavedVersion] = useState(0);
+  const [savedVersion, setSavedVersion] = useState(0);
   const [preferences, setPreferences] = useState<Preferences>(getPreferences());
 
   // Refresh preferences when page focuses or on mount
@@ -50,9 +51,20 @@ export function DashboardPage() {
       experience,
       source,
       sort,
+      status,
       showMatchesOnly,
     }, preferences);
-  }, [keyword, location, mode, experience, source, sort, showMatchesOnly, preferences]);
+  }, [keyword, location, mode, experience, source, sort, status, showMatchesOnly, preferences, savedVersion]);
+
+  const handleClearAll = () => {
+    setKeyword('');
+    setLocation('');
+    setMode('');
+    setExperience('');
+    setSource('');
+    setStatus('');
+    setShowMatchesOnly(false);
+  };
 
   const isPreferencesSet = preferences.roleKeywords.length > 0 || preferences.skills.length > 0;
 
@@ -84,9 +96,12 @@ export function DashboardPage() {
         onSourceChange={setSource}
         sort={sort}
         onSortChange={(v) => setSort(v as SortOption)}
+        status={status}
+        onStatusChange={setStatus}
         locations={locations}
         showMatchesOnly={showMatchesOnly}
         onShowMatchesOnlyChange={setShowMatchesOnly}
+        onClearAll={handleClearAll}
       />
 
       <div className="kn-job-grid">
@@ -96,6 +111,7 @@ export function DashboardPage() {
             job={job}
             onView={setViewJob}
             onSavedChange={() => setSavedVersion((v) => v + 1)}
+            onStatusChange={() => setSavedVersion((v) => v + 1)}
           />
         ))}
       </div>
