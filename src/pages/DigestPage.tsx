@@ -150,10 +150,10 @@ export function DigestPage() {
                     <h3 className="kn-digest-item__title">{job.title}</h3>
                     <p className="kn-digest-item__meta">{job.company} • {job.location} • {job.experience}</p>
                   </div>
-                  <div className="kn-digest-item__side">
-                    <div className="kn-score-badge">
-                      <span className="kn-score-badge__value">{job.matchScore}</span>
-                      <span className="kn-score-badge__label">Match</span>
+                  <div className="kn-digest-item__side" style={{ alignItems: 'flex-start', width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div className="kn-score-badge" style={{ minWidth: 'auto', padding: '4px 8px' }}>
+                      <span className="kn-score-badge__value" style={{ fontSize: '1rem' }}>{job.matchScore}</span>
+                      <span className="kn-score-badge__label" style={{ fontSize: '10px' }}>Match</span>
                     </div>
                     <a href={job.applyUrl} target="_blank" rel="noopener noreferrer" className="kn-btn kn-btn-primary kn-btn--sm">
                       Apply
@@ -163,12 +163,12 @@ export function DigestPage() {
               ))}
             </div>
 
-            <footer className="kn-digest-card__footer">
+            <footer className="kn-digest-card__footer" style={{ textAlign: 'left', padding: '16px 24px' }}>
               This digest was generated based on your preferences.
             </footer>
           </div>
 
-          <div className="kn-digest-card" style={{ marginTop: 'var(--space-4)' }}>
+          <div className="kn-digest-card">
             <header className="kn-digest-card__header">
               <h2 className="kn-digest-card__title">Recent Status Updates</h2>
             </header>
