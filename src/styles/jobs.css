@@ -35,7 +35,7 @@
 /* ─── Job grid ─── */
 .kn-job-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-3);
   width: 100%;
 }
@@ -297,8 +297,8 @@
   background-color: white;
   border: var(--card-border);
   border-radius: var(--radius);
-  max-width: 520px;
-  width: 100%;
+  max-width: 600px;
+  width: 95%;
   max-height: 90vh;
   overflow-y: auto;
   padding: var(--space-4);

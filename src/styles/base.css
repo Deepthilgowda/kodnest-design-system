@@ -8,6 +8,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 html {
@@ -27,7 +28,8 @@ body {
 }
 
 /* Typography — headings */
-h1, .kn-h1 {
+h1,
+.kn-h1 {
   font-family: var(--font-serif);
   font-size: var(--text-h1);
   font-weight: 600;
@@ -36,7 +38,8 @@ h1, .kn-h1 {
   margin: 0 0 var(--space-2);
 }
 
-h2, .kn-h2 {
+h2,
+.kn-h2 {
   font-family: var(--font-serif);
   font-size: var(--text-h2);
   font-weight: 600;
@@ -45,7 +48,8 @@ h2, .kn-h2 {
   margin: 0 0 var(--space-2);
 }
 
-h3, .kn-h3 {
+h3,
+.kn-h3 {
   font-family: var(--font-serif);
   font-size: var(--text-h3);
   font-weight: 600;
@@ -53,7 +57,8 @@ h3, .kn-h3 {
   margin: 0 0 var(--space-2);
 }
 
-h4, .kn-h4 {
+h4,
+.kn-h4 {
   font-family: var(--font-serif);
   font-size: var(--text-h4);
   font-weight: 600;
@@ -61,7 +66,8 @@ h4, .kn-h4 {
 }
 
 /* Body text — max 720px for readability */
-p, .kn-body {
+p,
+.kn-body {
   font-size: var(--text-body-lg);
   line-height: var(--line-height-loose);
   max-width: var(--measure);

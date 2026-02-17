@@ -22,7 +22,7 @@ export function SavedPage() {
   );
 
   return (
-    <main className="kn-page">
+    <section className="kn-section">
       <h1 className="kn-page__heading">Saved</h1>
       {savedJobs.length === 0 ? (
         <EmptyState
@@ -47,6 +47,6 @@ export function SavedPage() {
           <JobModal job={viewJob} onClose={() => setViewJob(null)} />
         </>
       )}
-    </main>
+    </section>
   );
 }

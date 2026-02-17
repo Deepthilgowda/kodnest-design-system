@@ -86,19 +86,19 @@ export function DigestPage() {
 
   if (!isPreferencesSet) {
     return (
-      <main className="kn-page">
+      <section className="kn-page-section">
         <h1 className="kn-page__heading">Digest</h1>
         <div className="kn-empty-state">
           <h2 className="kn-empty-state__title">Set preferences to generate a personalized digest.</h2>
           <p className="kn-empty-state__message">We need your keywords and skills to find the best roles for you.</p>
         </div>
-      </main>
+      </section>
     );
   }
 
   return (
-    <main className="kn-page kn-digest-page">
-      <div className="kn-digest-header-actions">
+    <section className="kn-digest-page">
+      <div className="kn-digest-header-actions" style={{ maxWidth: 'none' }}>
         <h1 className="kn-page__heading">Daily Digest</h1>
         {!digest && (
           <button onClick={generateDigest} className="kn-btn kn-btn-primary">
@@ -136,7 +136,7 @@ export function DigestPage() {
       )}
 
       {digest && digest.length > 0 && (
-        <div className="kn-digest-container">
+        <div className="kn-digest-container" style={{ maxWidth: 'none' }}>
           <div className="kn-digest-card">
             <header className="kn-digest-card__header">
               <h2 className="kn-digest-card__title">Top 10 Jobs For You — 9AM Digest</h2>
@@ -230,7 +230,7 @@ export function DigestPage() {
           </div>
         </div>
       )}
-    </main>
+    </section>
   );
 }
 

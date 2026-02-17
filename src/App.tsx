@@ -20,18 +20,20 @@ function App() {
     <BrowserRouter>
       <div className="kn-layout kn-layout--job-tracker">
         <TopNav />
-        <div className="kn-layout__content">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/saved" element={<SavedPage />} />
-            <Route path="/digest" element={<DigestPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/proof" element={<ProofPage />} />
-            <Route path="/jt/07-test" element={<TestPage />} />
-            <Route path="/jt/08-ship" element={<ShipPage />} />
-          </Routes>
-        </div>
+        <main className="kn-layout__content">
+          <div className="kn-container">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/saved" element={<SavedPage />} />
+              <Route path="/digest" element={<DigestPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/proof" element={<ProofPage />} />
+              <Route path="/jt/07-test" element={<TestPage />} />
+              <Route path="/jt/08-ship" element={<ShipPage />} />
+            </Routes>
+          </div>
+        </main>
       </div>
     </BrowserRouter>
   );

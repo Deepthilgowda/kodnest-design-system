@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export function HomePage() {
   return (
-    <main className="kn-landing">
+    <section className="kn-section">
       <h1 className="kn-landing__headline">
         Stop Missing The Right Jobs.
       </h1>
@@ -17,6 +17,6 @@ export function HomePage() {
       <Link to="/settings" className="kn-btn kn-btn-primary kn-landing__cta">
         Start Tracking
       </Link>
-    </main>
+    </section>
   );
 }

@@ -30,11 +30,11 @@ export function TestPage() {
     const isAllPassed = passCount === TOTAL_TESTS;
 
     return (
-        <main className="kn-page">
+        <section className="kn-section">
             <header className="kn-page__header" style={{ marginBottom: 'var(--space-6)' }}>
                 <h1 className="kn-page__heading">System Verification</h1>
                 <div className={`kn-banner ${isAllPassed ? 'kn-banner--success' : 'kn-banner--warning'}`} style={{ marginTop: 'var(--space-4)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
                         <div>
                             <p className="kn-banner__text" style={{ fontWeight: 600, fontSize: '1.1rem' }}>
                                 Tests Passed: {passCount} / {TOTAL_TESTS}
@@ -52,11 +52,11 @@ export function TestPage() {
                 </div>
             </header>
 
-            <div className="kn-digest-card" style={{ overflow: 'visible' }}>
-                <div className="kn-digest-list">
+            <div className="kn-digest-card" style={{ overflow: 'visible', maxWidth: '800px', width: '100%' }}>
+                <div className="kn-digest-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {TEST_ITEMS.map((item) => (
-                        <div key={item.id} className="kn-digest-item" style={{ padding: 'var(--space-4)', position: 'relative' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'relative' }}>
+                        <div key={item.id} className="kn-digest-item" style={{ padding: 'var(--space-4)', position: 'relative', border: '1px solid var(--color-border)', borderRadius: 'var(--radius)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative', width: '100%' }}>
                                 <input
                                     type="checkbox"
                                     id={item.id}
@@ -72,7 +72,7 @@ export function TestPage() {
                                         cursor: 'pointer',
                                         color: checkedItems.includes(item.id) ? 'var(--color-text-muted)' : 'var(--color-text)',
                                         textDecoration: checkedItems.includes(item.id) ? 'line-through' : 'none',
-                                        marginRight: '4px'
+                                        flex: 1
                                     }}
                                 >
                                     {item.label}
@@ -85,8 +85,8 @@ export function TestPage() {
                                             cursor: 'help',
                                             color: 'var(--color-primary)',
                                             fontSize: '0.8rem',
-                                            width: '18px',
-                                            height: '18px',
+                                            width: '20px',
+                                            height: '20px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
@@ -107,6 +107,6 @@ export function TestPage() {
                     ))}
                 </div>
             </div>
-        </main>
+        </section>
     );
 }

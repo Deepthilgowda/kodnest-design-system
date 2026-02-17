@@ -3,12 +3,26 @@
  * Centralized logic for system verification.
  */
 
-export const TEST_STORAGE_KEY = 'jobTrackerTestStatus';
+export const TEST_STORAGE_KEY = 'jt_test_checklist';
+export const ARTIFACTS_STORAGE_KEY = 'jobTrackerArtifacts';
+
+// Cleanup legacy keys
+['jobTrackerTestStatus', 'testChecklist', 'checklist', 'jt_tests'].forEach(key => {
+    if (localStorage.getItem(key)) {
+        localStorage.removeItem(key);
+    }
+});
 
 export interface TestItem {
     id: string;
     label: string;
     howTo: string;
+}
+
+export interface ProjectArtifacts {
+    lovable: string;
+    github: string;
+    vercel: string;
 }
 
 export const TEST_ITEMS: TestItem[] = [
@@ -24,37 +38,85 @@ export const TEST_ITEMS: TestItem[] = [
     { id: 't10', label: 'No console errors on main pages', howTo: 'Open Browser Console (F12) and verify no red error logs appear while navigating.' },
 ];
 
+export const PROJECT_STEPS = [
+    { id: 's1', label: 'Initialization' },
+    { id: 's2', label: 'Job Feed' },
+    { id: 's3', label: 'Scoring Engine' },
+    { id: 's4', label: 'Digest Simulation' },
+    { id: 's5', label: 'Status Tracking' },
+    { id: 's6', label: 'Persistence' },
+    { id: 's7', label: 'Verification' },
+    { id: 's8', label: 'Final Proof' },
+];
+
 export const TOTAL_TESTS = TEST_ITEMS.length;
 
-export function getPassedTestIds(): string[] {
+function getChecklistObject(): Record<string, boolean> {
     try {
         const saved = localStorage.getItem(TEST_STORAGE_KEY);
-        if (!saved) return [];
+        if (!saved) return {};
         const parsed = JSON.parse(saved);
-        return Array.isArray(parsed) ? parsed : [];
+        if (Array.isArray(parsed)) return {};
+        return typeof parsed === 'object' && parsed !== null ? parsed : {};
     } catch {
-        return [];
+        return {};
     }
+}
+
+export function getPassedTestIds(): string[] {
+    const checklist = getChecklistObject();
+    return Object.keys(checklist).filter(id => checklist[id] === true);
+}
+
+export function getArtifacts(): ProjectArtifacts {
+    try {
+        const saved = localStorage.getItem(ARTIFACTS_STORAGE_KEY);
+        if (!saved) return { lovable: '', github: '', vercel: '' };
+        return JSON.parse(saved);
+    } catch {
+        return { lovable: '', github: '', vercel: '' };
+    }
+}
+
+export function setArtifacts(artifacts: ProjectArtifacts): void {
+    localStorage.setItem(ARTIFACTS_STORAGE_KEY, JSON.stringify(artifacts));
 }
 
 export function isShippingUnlocked(): boolean {
-    return getPassedTestIds().length === TOTAL_TESTS;
+    const checklist = getChecklistObject();
+    const values = Object.values(checklist);
+    const allChecked = values.length === TOTAL_TESTS && values.every(v => v === true);
+    return allChecked;
+}
+
+export type ShipStatus = 'Not Started' | 'In Progress' | 'Shipped';
+
+export function getShipStatus(): ShipStatus {
+    const checklist = getChecklistObject();
+    const values = Object.values(checklist);
+    const testsPassed = values.filter(v => v === true).length;
+
+    const artifacts = getArtifacts();
+    const linksProvided = !!(artifacts.lovable || artifacts.github || artifacts.vercel);
+
+    if (testsPassed === TOTAL_TESTS) {
+        return 'Shipped';
+    }
+
+    if (testsPassed > 0 || linksProvided) {
+        return 'In Progress';
+    }
+
+    return 'Not Started';
 }
 
 export function setTestItemStatus(id: string, checked: boolean): void {
-    const current = getPassedTestIds();
-    let next: string[];
-
-    if (checked) {
-        if (current.includes(id)) return;
-        next = [...current, id];
-    } else {
-        next = current.filter(i => i !== id);
-    }
-
-    localStorage.setItem(TEST_STORAGE_KEY, JSON.stringify(next));
+    const checklist = getChecklistObject();
+    checklist[id] = checked;
+    localStorage.setItem(TEST_STORAGE_KEY, JSON.stringify(checklist));
 }
 
 export function resetAllTests(): void {
     localStorage.removeItem(TEST_STORAGE_KEY);
 }
+

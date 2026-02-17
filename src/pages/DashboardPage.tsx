@@ -69,7 +69,7 @@ export function DashboardPage() {
   const isPreferencesSet = preferences.roleKeywords.length > 0 || preferences.skills.length > 0;
 
   return (
-    <main className="kn-page">
+    <section className="kn-section">
       <h1 className="kn-page__heading">Dashboard</h1>
 
       {!isPreferencesSet && (
@@ -104,7 +104,7 @@ export function DashboardPage() {
         onClearAll={handleClearAll}
       />
 
-      <div className="kn-job-grid">
+      <div className="kn-job-grid" style={{ marginTop: 'var(--space-4)' }}>
         {jobsWithScores.map((job) => (
           <JobCard
             key={job.id}
@@ -132,6 +132,6 @@ export function DashboardPage() {
       )}
 
       <JobModal job={viewJob} onClose={() => setViewJob(null)} />
-    </main>
+    </section>
   );
 }
