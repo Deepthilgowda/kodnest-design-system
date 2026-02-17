@@ -12,7 +12,7 @@ import { filterAndSortJobs, getUniqueLocations, type SortOption } from '../utils
 import { getPreferences, type Preferences } from '../utils/preferences';
 import type { Job } from '../types/job';
 import { Link } from 'react-router-dom';
-import { calculateMatchScore } from '../utils/scoring';
+
 
 const DEFAULT_SORT: SortOption = 'latest';
 
