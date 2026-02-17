@@ -38,9 +38,9 @@ export function JobModal({ job, onClose }: JobModalProps) {
         <p className="kn-modal__company">{job.company}</p>
         <div className="kn-modal__meta">
           <span>{job.location}</span>
-          <span> · </span>
+          <span>&nbsp;&nbsp;&nbsp;</span>
           <span>{job.mode}</span>
-          <span> · </span>
+          <span>+</span>
           <span>{job.experience}</span>
         </div>
         <div className="kn-modal__section">

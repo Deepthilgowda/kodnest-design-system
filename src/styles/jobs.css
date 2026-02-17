@@ -175,8 +175,13 @@
 }
 
 @keyframes kn-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .kn-modal {
@@ -196,6 +201,7 @@
     opacity: 0;
     transform: scale(0.98) translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -297,4 +303,131 @@
 
 .kn-modal__footer .kn-btn {
   text-decoration: none;
+}
+
+/* ─── Toggle ─── */
+.kn-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: pointer;
+  font-size: var(--text-small);
+  user-select: none;
+}
+
+.kn-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+}
+
+/* ─── Banner ─── */
+.kn-banner {
+  background-color: rgba(139, 0, 0, 0.05);
+  border: 1px solid rgba(139, 0, 0, 0.15);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.kn-banner__text {
+  margin: 0;
+  font-size: var(--text-body);
+  color: var(--color-text);
+}
+
+/* ─── Settings Page Additions ─── */
+.kn-settings-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-1);
+}
+
+.kn-settings-page__status {
+  font-size: var(--text-small);
+  color: var(--color-success);
+  font-weight: 500;
+  animation: kn-fade-out 2s forwards;
+}
+
+@keyframes kn-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.kn-range {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
+/* ─── Layout Adjustments ─── */
+.kn-filter-bar__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-2);
+}
+
+.kn-filter-bar__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.kn-job-card__badges {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.kn-btn--sm {
+  padding: 0 var(--space-2);
+  min-height: 32px;
+  font-size: var(--text-small);
+}
+
+.kn-form-field__options--scroll {
+  max-height: 140px;
+  overflow-y: auto;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: white;
+}
+
+.kn-form-field__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 8px;
+  margin-bottom: 2px;
+  font-size: var(--text-small);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
+}
+
+.kn-form-field__option:hover {
+  background-color: var(--color-bg);
+}
+
+.kn-form-field__option input {
+  margin: 0;
+  accent-color: var(--color-accent);
 }

@@ -29,22 +29,37 @@ export function JobCard({ job, onView, onSavedChange, showUnsave }: JobCardProps
     window.open(job.applyUrl, '_blank', 'noopener,noreferrer');
   }
 
+  const getScoreColorClass = (score: number) => {
+    if (score >= 80) return 'kn-badge--shipped'; // Greenish
+    if (score >= 60) return 'kn-badge--in-progress'; // Amberish
+    if (score >= 40) return ''; // Neutral (default border)
+    return 'kn-badge--not-started'; // Greyish
+  };
+
   return (
     <article className="kn-job-card">
       <div className="kn-job-card__header">
         <h3 className="kn-job-card__title">{job.title}</h3>
-        <span className={`kn-job-card__source kn-job-card__source--${job.source.toLowerCase()}`}>
-          {job.source}
-        </span>
+        <div className="kn-job-card__badges">
+          {(job as any).matchScore !== undefined && (
+            <span className={`kn-badge ${getScoreColorClass((job as any).matchScore)}`}>
+              {(job as any).matchScore}% Match
+            </span>
+          )}
+          <span className={`kn-job-card__source kn-job-card__source--${job.source.toLowerCase()}`}>
+            {job.source}
+          </span>
+        </div>
       </div>
       <p className="kn-job-card__company">{job.company}</p>
       <div className="kn-job-card__meta">
         <span className="kn-job-card__location">{job.location}</span>
-        <span className="kn-job-card__sep">·</span>
+        <span>&nbsp;&nbsp;&nbsp;</span>
         <span className="kn-job-card__mode">{job.mode}</span>
+        <span>+</span>
+        <span className="kn-job-card__exp">{job.experience}</span>
       </div>
       <div className="kn-job-card__row">
-        <span className="kn-job-card__exp">Exp: {job.experience}</span>
         <span className="kn-job-card__salary">{job.salaryRange}</span>
       </div>
       <p className="kn-job-card__posted">{formatPostedDaysAgo(job.postedDaysAgo)}</p>
