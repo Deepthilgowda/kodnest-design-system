@@ -732,3 +732,32 @@
   color: var(--color-text-muted);
   white-space: nowrap;
 }
+
+/* ─── Test Page Tooltips ─── */
+.kn-test-tooltip-container:hover .kn-test-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.kn-test-tooltip {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  padding: 8px 10px;
+  background: #111;
+  color: white;
+  font-size: 12px;
+  border-radius: 8px;
+  white-space: normal;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Remove arrow for absolute side positioning to keep it clean if requested, 
+   but user didn't explicitly say remove it, though the new positioning might make it look odd if not adjusted.
+   Actually, with left: 24px on a relative container, it will sit right next to the icon. */

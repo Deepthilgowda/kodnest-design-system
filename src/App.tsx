@@ -12,6 +12,8 @@ import { SavedPage } from './pages/SavedPage';
 import { DigestPage } from './pages/DigestPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { ProofPage } from './pages/ProofPage';
+import { TestPage } from './pages/TestPage';
+import { ShipPage } from './pages/ShipPage';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/digest" element={<DigestPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/proof" element={<ProofPage />} />
+            <Route path="/jt/07-test" element={<TestPage />} />
+            <Route path="/jt/08-ship" element={<ShipPage />} />
           </Routes>
         </div>
       </div>

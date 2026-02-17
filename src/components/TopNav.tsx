@@ -6,7 +6,8 @@
  */
 
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { isShippingUnlocked } from '../utils/testStatus';
 
 const NAV_ITEMS = [
   { label: 'Dashboard', path: '/dashboard' },
@@ -14,26 +15,60 @@ const NAV_ITEMS = [
   { label: 'Digest', path: '/digest' },
   { label: 'Settings', path: '/settings' },
   { label: 'Proof', path: '/proof' },
+  { label: 'Test', path: '/jt/07-test' },
+  { label: 'Ship', path: '/jt/08-ship' },
 ] as const;
 
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shipLocked, setShipLocked] = useState(true);
+
+  useEffect(() => {
+    const checkLock = () => {
+      setShipLocked(!isShippingUnlocked());
+    };
+
+    checkLock();
+    // Listen for storage changes in other tabs
+    window.addEventListener('storage', checkLock);
+    // Refresh on focus, click or state changes in this tab
+    window.addEventListener('click', checkLock);
+    window.addEventListener('focus', checkLock);
+
+    return () => {
+      window.removeEventListener('storage', checkLock);
+      window.removeEventListener('click', checkLock);
+      window.removeEventListener('focus', checkLock);
+    };
+  }, []);
 
   const navLinks = (
     <>
-      {NAV_ITEMS.map(({ label, path }) => (
-        <NavLink
-          key={path}
-          to={path}
-          end={false}
-          className={({ isActive }) =>
-            `kn-topnav__link${isActive ? ' kn-topnav__link--active' : ''}`
-          }
-          onClick={() => setMenuOpen(false)}
-        >
-          {label}
-        </NavLink>
-      ))}
+      {NAV_ITEMS.map(({ label, path }) => {
+        const isShip = path === '/jt/08-ship';
+        const locked = isShip && shipLocked;
+
+        return (
+          <NavLink
+            key={path}
+            to={locked ? '#' : path}
+            end={false}
+            className={({ isActive }) =>
+              `kn-topnav__link${isActive ? ' kn-topnav__link--active' : ''}${locked ? ' kn-topnav__link--locked' : ''}`
+            }
+            onClick={(e) => {
+              if (locked) {
+                e.preventDefault();
+                alert('Shipping is locked! Complete all 10 tests in the Test Checklist first.');
+              }
+              setMenuOpen(false);
+            }}
+            style={locked ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
+          >
+            {locked ? `🔒 ${label}` : label}
+          </NavLink>
+        );
+      })}
     </>
   );
 
